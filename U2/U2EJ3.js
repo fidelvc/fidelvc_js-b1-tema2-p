@@ -42,6 +42,9 @@ const areaMyTriangle2 = (myTriangle2.base * myTriangle2.height) / 2;
 myTriangle1.height = myTriangle2.base;
 myTriangle2.height = myTriangle1.height;
 
+console.log(myTriangle1);
+console.log(myTriangle2);
+
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
