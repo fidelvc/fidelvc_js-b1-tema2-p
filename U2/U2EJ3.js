@@ -33,18 +33,21 @@ class Triangle {
   }
 }
 
+// 1.
 const myTriangle1 = new Triangle(10, 5);
 const myTriangle2 = new Triangle(15, 7);
+
+// 2.
+myTriangle2.base = myTriangle1.height;
+// 3.
+myTriangle1.height = myTriangle2.height;
+
+console.log(myTriangle2);
 
 const areaMyTriangle1 = (myTriangle1.base * myTriangle1.height) / 2;
 const areaMyTriangle2 = (myTriangle2.base * myTriangle2.height) / 2;
 
-myTriangle1.height = myTriangle2.base;
-myTriangle2.height = myTriangle1.height;
-
-console.log(myTriangle1);
-console.log(myTriangle2);
-
+console.log(areaMyTriangle1, areaMyTriangle2);
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
