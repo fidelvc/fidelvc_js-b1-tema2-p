@@ -43,7 +43,39 @@ class Triangle {
   constructor(base, height, rightTriangle) {
     this.base = base;
     this.height = height;
-    this.rightTriangle = rightTriangle;
+    this.rightTriangle = rightTriangle; //boolean
+  }
+
+  //1. Implementar getter areaTriangle: que devuelva el valor calculado del área del triángulo (base x altura) / 2.
+  get areaTriangle() {
+    return this.base * this.height / 2;
+  }
+
+  //2. Implementar getter: rightHypotenuse. Nos devolverá, en el caso de que el triángulo sea rectángulo, el valor calculado de la hipotenusa c = √(b²+a²) En el caso que el triángulo no sea rectángulo este getter devolverá undefined.
+
+  get rightHypotenuse() {
+    function hypotenuse(base, altura) {
+      function square(n) {
+        return n * n;
+      }
+      return Math.sqrt(square(base) + square(altura));
+    }
+
+    if (this.rightTriangle) {
+      //return Math.hypot(this.base, this.height);
+      return hypotenuse(this.base, this.height);
+    }
+    return undefined;
+  }
+
+  //3. Implementar el segundo getter: rightPerimeter. Para calcular el perímetro de un tríangulo, es decir, si el triángulo no es rectángulo devolvemos undefined, pero si lo es, devolvemos el perímetro del mismo. perímetro = base + altura + hipotenusa.
+
+  get rightPerimeter() {
+    if (!this.rightTriangle) {
+      return undefined;
+    } else {
+      return this.base + this.height + this.rightHypotenuse;
+    }
   }
 }
 
