@@ -51,9 +51,41 @@ class Planet {
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
 
 // TODO: 1. Definir 8 constantes (myplanet1...) basado en el ejercicio 1.1.1, usando una nueva clase.
+
+const myPlanet1 = new Planet("Mercury", 58344000, false, 4878);
+const myPlanet2 = new Planet("Venus", 107712000, false, 12100);
+const myPlanet3 = new Planet("Earth", 149600000, false, 12756);
+const myPlanet4 = new Planet("Mars", 227392000, false, 6787);
+const myPlanet5 = new Planet("Jupiter", 777920000, true, 142984);
+const myPlanet6 = new Planet("Saturn", 1427184000, true, 120536);
+const myPlanet7 = new Planet("Uranus", 2600000000, true, 51108);
+const myPlanet8 = new Planet("Neptune", 4300000000, true, 49538);
+
+const planets = [
+  myPlanet1,
+  myPlanet2,
+  myPlanet3,
+  myPlanet4,
+  myPlanet5,
+  myPlanet6,
+  myPlanet7,
+  myPlanet8,
+];
+
 // TODO: 2. Obtener el nombre de la estrella de un planeta usando el método de instancia nameOftheStart.
+
+const starName = myPlanet1.nameOftheStar();
+//console.log(starName);
+
 // TODO: 3. Filtrar aquellos planetas que posen anillos usando el método de clase planetsWithRings.
+
+const PWR = Planet.planetsWithRings(planets);
+//console.log(PWR);
+
 // TODO: 4. Obtener la distancia entre dos planetas usando el método de clase distanceBetweenPlanets.
+
+const venusToSarturn = Planet.distanceBetweenPlanets(myPlanet2, myPlanet6);
+//console.log(venusToSarturn);
 
 /**
  * TEST
