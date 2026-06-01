@@ -42,6 +42,15 @@ class Car {
     this.year = year;
   }
 
+  //feat: 1. compareAntiguaty(c1, c2) -> oldestone.
+
+  static compareAntiguaty(c1, c2) {
+    if (c1.year == c2.year) {
+      return "Tienen la misma antiguedad";
+    }
+    return c1 < c2 ? c1 : c2;
+  }
+
   // Implementar un setter: carAntiguaty, que nos permitirá definir el valor de la propiedad "year" a partir de los años de antiguedad del vehículo (2023 - antiguedad)
   set carAntiguaty(antiguedad) {
     this.year = 2023 - antiguedad;
@@ -53,6 +62,11 @@ class Car {
   }
 }
 
+const myCar1 = new Car("Ford", "Mustang Boss 429", 7000, 375, 1969);
+const myCar2 = new Car("BMW", "520d", 1980, 136, 2002);
+const myCar3 = new Car("Mercedes-Benz", "280 SLC", 2746, 136, 1979);
+
+console.log(Car.compareAntiguaty(myCar1, myCar3));
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
