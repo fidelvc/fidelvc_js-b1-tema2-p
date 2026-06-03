@@ -51,6 +51,24 @@ class Car {
     return c1 < c2 ? c1 : c2;
   }
 
+  // feat: 2. Obtener el vehículo de mayor cilindrada
+
+  static maxDisplacement(cars) {
+    let theMost = cars[0].displacement;
+    for (let i = 1; i < cars.length; i++) {
+      if (theMost < cars[i].displacement) {
+        theMost = cars[i].displacement;
+      }
+    }
+    return cars.filter((car) => car.displacement == theMost);
+  }
+
+  // feat: 3. comparar la potencia de los coches clásicos con los coches eléctricos
+
+  cv2kw() {
+    return this.horsePower / 0.736;
+  }
+
   // Implementar un setter: carAntiguaty, que nos permitirá definir el valor de la propiedad "year" a partir de los años de antiguedad del vehículo (2023 - antiguedad)
   set carAntiguaty(antiguedad) {
     this.year = 2023 - antiguedad;
@@ -63,10 +81,13 @@ class Car {
 }
 
 const myCar1 = new Car("Ford", "Mustang Boss 429", 7000, 375, 1969);
-const myCar2 = new Car("BMW", "520d", 1980, 136, 2002);
+const myCar2 = new Car("BMW", "520d", 3000, 136, 2002);
 const myCar3 = new Car("Mercedes-Benz", "280 SLC", 2746, 136, 1979);
+const myCars = [myCar1, myCar2, myCar3];
 
-console.log(Car.compareAntiguaty(myCar1, myCar3));
+//console.log(Car.compareAntiguaty(myCar1, myCar3));
+//console.log(Car.maxDisplacement(myCars));
+console.log(myCar1.cv2kw());
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
