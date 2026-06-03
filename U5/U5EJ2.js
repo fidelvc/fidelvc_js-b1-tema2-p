@@ -54,13 +54,13 @@ class Car {
   // feat: 2. Obtener el vehículo de mayor cilindrada
 
   static maxDisplacement(cars) {
-    let theMost = cars[0].displacement;
-    for (let i = 1; i < cars.length; i++) {
-      if (theMost < cars[i].displacement) {
-        theMost = cars[i].displacement;
+    let theMost = cars[0];
+    for (let i = 0; i < cars.length; i++) {
+      if (theMost.displacement <= cars[i].displacement) {
+        theMost = cars[i];
       }
     }
-    return cars.filter((car) => car.displacement == theMost);
+    return theMost;
   }
 
   // feat: 3. comparar la potencia de los coches clásicos con los coches eléctricos
@@ -82,12 +82,12 @@ class Car {
 
 const myCar1 = new Car("Ford", "Mustang Boss 429", 7000, 375, 1969);
 const myCar2 = new Car("BMW", "520d", 3000, 136, 2002);
-const myCar3 = new Car("Mercedes-Benz", "280 SLC", 2746, 136, 1979);
+const myCar3 = new Car("Mercedes-Benz", "280 SLC", 2323, 136, 1979);
 const myCars = [myCar1, myCar2, myCar3];
 
 //console.log(Car.compareAntiguaty(myCar1, myCar3));
-//console.log(Car.maxDisplacement(myCars));
-console.log(myCar1.cv2kw());
+console.log(Car.maxDisplacement(myCars));
+//console.log(myCar1.cv2kw());
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
