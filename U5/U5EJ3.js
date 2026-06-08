@@ -38,46 +38,45 @@
 	Finalment, crea almenys 3 objectes de la classe Triangle i fes 3 trucades a aquests nous mètodes.
 */
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
-// 2.3.2
+
 class Triangle {
   constructor(base, height, rightTriangle) {
     this.base = base;
     this.height = height;
-    this.rightTriangle = rightTriangle; //boolean
+    this.rightTriangle = rightTriangle; //True si es triángulo rectángulo.
   }
 
-  //1. Implementar getter areaTriangle: que devuelva el valor calculado del área del triángulo (base x altura) / 2.
   get areaTriangle() {
     return this.base * this.height / 2;
   }
 
-  //2. Implementar getter: rightHypotenuse. Nos devolverá, en el caso de que el triángulo sea rectángulo, el valor calculado de la hipotenusa c = √(b²+a²) En el caso que el triángulo no sea rectángulo este getter devolverá undefined.
-
   get rightHypotenuse() {
-    function hypotenuse(base, altura) {
-      function square(n) {
-        return n * n;
-      }
-      return Math.sqrt(square(base) + square(altura));
-    }
-
-    if (this.rightTriangle) {
-      //return Math.hypot(this.base, this.height);
-      return hypotenuse(this.base, this.height);
-    }
-    return undefined;
+    return this.rightTriangle ? Math.hypot(this.base, this.height) : undefined;
   }
-
-  //3. Implementar el segundo getter: rightPerimeter. Para calcular el perímetro de un tríangulo, es decir, si el triángulo no es rectángulo devolvemos undefined, pero si lo es, devolvemos el perímetro del mismo. perímetro = base + altura + hipotenusa.
 
   get rightPerimeter() {
-    if (!this.rightTriangle) {
-      return undefined;
-    } else {
-      return this.base + this.height + this.rightHypotenuse;
+    return this.rightTriangle
+      ? this.base + this.height + this.rightHypotenuse
+      : undefined;
+  }
+
+  static rightTriangleUnion(rt1, rt2) {
+    if (!rt1.rightTriangle | !rt2.rightTriangle) {
+      return "¡Error. Ambos tríanglos deben de ser rectángulos!";
     }
+    function valorAbosluto(value) {
+      return value >= 0 ? value : (value - value * 2);
+    }
+    return rt1.rightPerimeter + rt2.rightPerimeter +
+      valorAbosluto(rt1.height - rt2.height);
   }
 }
+
+const triangle1 = new Triangle(2, 3, true);
+const triangle2 = new Triangle(2, 3, true);
+const triangle3 = new Triangle(6, 4, false);
+console.log(Triangle.rightTriangleUnion(triangle1, triangle2));
+console.log(Triangle.rightTriangleUnion(triangle1, triangle3));
 
 /**
  * TEST
