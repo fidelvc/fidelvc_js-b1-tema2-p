@@ -40,9 +40,9 @@
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
 
 class Triangle {
-  constructor(base, height, rightTriangle) {
-    this.base = base;
+  constructor(height, base, rightTriangle) {
     this.height = height;
+    this.base = base;
     this.rightTriangle = rightTriangle; //True si es triángulo rectángulo.
   }
 
@@ -51,7 +51,9 @@ class Triangle {
   }
 
   get rightHypotenuse() {
-    return this.rightTriangle ? Math.hypot(this.base, this.height) : undefined;
+    return this.rightTriangle
+      ? Math.round(Math.hypot(this.base, this.height))
+      : undefined;
   }
 
   get rightPerimeter() {
@@ -61,23 +63,42 @@ class Triangle {
   }
 
   static rightTriangleUnion(rt1, rt2) {
-    if (!rt1.rightTriangle | !rt2.rightTriangle) {
+    /*if (!rt1.rightTriangle | !rt2.rightTriangle) {
       return "¡Error. Ambos tríanglos deben de ser rectángulos!";
     }
     function valorAbosluto(value) {
       return value >= 0 ? value : (value - value * 2);
-    }
+    }*/
     return rt1.rightPerimeter + rt2.rightPerimeter +
-      valorAbosluto(rt1.height - rt2.height);
+      Math.abs(rt1.height - rt2.height);
+  }
+
+  static areaPoligon(poligon) {
+    let res = 0;
+    for (let i = 0; i < poligon.length; i++) {
+      res = res + poligon[i].areaTriangle;
+    }
+    return res;
+  }
+
+  isEquilateral() {
+    return this.height === this.base * Math.sqrt(3) / 2;
   }
 }
 
-const triangle1 = new Triangle(2, 3, true);
-const triangle2 = new Triangle(2, 3, true);
+const triangle1 = new Triangle(3, 4, true);
+const triangle2 = new Triangle(3, 5, true);
 const triangle3 = new Triangle(6, 4, false);
-console.log(Triangle.rightTriangleUnion(triangle1, triangle2));
+const triangle4 = new Triangle(10, 10, true);
+const myEquilateral = new Triangle(10, 10 * Math.sqrt(3) / 2, false);
+/* console.log(Triangle.rightTriangleUnion(triangle1, triangle2));
 console.log(Triangle.rightTriangleUnion(triangle1, triangle3));
+console.log(Triangle.areaPoligon([triangle1, triangle2, triangle3]));
+console.log(myEquilateral.isEquilateral());*/
 
+const myTriangle1 = new Triangle(10, 5, true);
+const myTriangle2 = new Triangle(15, 7, true);
+console.log(Triangle.rightTriangleUnion(myTriangle1, myTriangle2));
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
