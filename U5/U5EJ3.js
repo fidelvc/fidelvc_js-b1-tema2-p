@@ -40,7 +40,7 @@
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
 
 class Triangle {
-  constructor(height, base, rightTriangle) {
+  constructor(base, height, rightTriangle) {
     this.height = height;
     this.base = base;
     this.rightTriangle = rightTriangle; //True si es triángulo rectángulo.
@@ -52,7 +52,7 @@ class Triangle {
 
   get rightHypotenuse() {
     return this.rightTriangle
-      ? Math.round(Math.hypot(this.base, this.height))
+      ? parseInt(Math.hypot(this.base, this.height))
       : undefined;
   }
 
@@ -63,12 +63,6 @@ class Triangle {
   }
 
   static rightTriangleUnion(rt1, rt2) {
-    /*if (!rt1.rightTriangle | !rt2.rightTriangle) {
-      return "¡Error. Ambos tríanglos deben de ser rectángulos!";
-    }
-    function valorAbosluto(value) {
-      return value >= 0 ? value : (value - value * 2);
-    }*/
     return rt1.rightPerimeter + rt2.rightPerimeter +
       Math.abs(rt1.height - rt2.height);
   }
@@ -86,19 +80,13 @@ class Triangle {
   }
 }
 
-const triangle1 = new Triangle(3, 4, true);
-const triangle2 = new Triangle(3, 5, true);
-const triangle3 = new Triangle(6, 4, false);
-const triangle4 = new Triangle(10, 10, true);
-const myEquilateral = new Triangle(10, 10 * Math.sqrt(3) / 2, false);
-/* console.log(Triangle.rightTriangleUnion(triangle1, triangle2));
-console.log(Triangle.rightTriangleUnion(triangle1, triangle3));
-console.log(Triangle.areaPoligon([triangle1, triangle2, triangle3]));
-console.log(myEquilateral.isEquilateral());*/
-
 const myTriangle1 = new Triangle(10, 5, true);
 const myTriangle2 = new Triangle(15, 7, true);
+const myEquilateral = new Triangle(10, 10 * Math.sqrt(3) / 2, false);
+
 console.log(Triangle.rightTriangleUnion(myTriangle1, myTriangle2));
+console.log(myTriangle1.rightPerimeter);
+
 /**
  * TEST
  * The purpose of this code is purely for TESTING PURPOSES,
