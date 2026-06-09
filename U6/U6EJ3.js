@@ -1,15 +1,15 @@
 //T2: Clases / Classes
 //U6: Serialización de objetos con JSON / Serialització d'objectes amb JSON
-/** 
+/**
   -- CASTELLANO
-  -- EJERCICIO 2.6.3 ENUNCIADO: 
+  -- EJERCICIO 2.6.3 ENUNCIADO:
 	Dado en el valor de la constante denominada myJSON, un texto plano en formato JSON que contiene la descripción de un Array con tres objetos de la clase Triangle,
 	vista en el ejercicio 2.5.3. Se nos pide
 	- Definir en una constante denominada myTriangles un Array de objetos Triangle a partir de este texto.
 	- Obtener un nuevo Array en otra constante (a la que llamaremos equilateralsTriangles) con todos triángulos equiláteros del Array anterior (myTriangles).
 	- Pasar este nuevo Array a un texto plano JSON en una nueva constante denominada newTrianglesJSON.
-	
-  
+
+
   -- CATALÀ
   -- EXERCICI 2.6.3 ENUNCIAT:
 	Donat  el valor de la constant anomenada myJSON, un text pla en format JSON que conté la descripció d'un Array amb tres objectes de la classe Triangle,
@@ -19,20 +19,24 @@
 	- Passar aquest nou Array a un text pla JSON en una nova constant anomenada newTrianglesJSON.
 */
 
-const myJSON = '[{"base":10,"height":5,"rightTriangle":true},{"base":10,"height":8.660254037844386,"rightTriangle":false},{"base":15,"height":7,"rightTriangle":true}]';
+const myJSON =
+  '[{"base":10,"height":5,"rightTriangle":true},{"base":10,"height":8.660254037844386,"rightTriangle":false},{"base":15,"height":7,"rightTriangle":true}]';
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
 
+const myTriangles = JSON.parse(myJSON);
 
-
-
+const equilateralsTriangles = myTriangles.filter((triangle) =>
+  triangle.height === triangle.base * Math.sqrt(3) / 2
+);
+const newTrianglesJSON = JSON.stringify(equilateralsTriangles);
 
 /**
  * TEST
- * The purpose of this code is purely for TESTING PURPOSES, 
- * if you run this code outside of this environment, 
+ * The purpose of this code is purely for TESTING PURPOSES,
+ * if you run this code outside of this environment,
  * please comment or remove the following lines
  */
 export function tests() {
-	return [myTriangles, equilateralsTriangles, newTrianglesJSON];
-  }
+  return [myTriangles, equilateralsTriangles, newTrianglesJSON];
+}
